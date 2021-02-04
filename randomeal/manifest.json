@@ -4,7 +4,6 @@
   "description": "Pick a random restaurant from the 10bis homepage.",
   "permissions": [
     "activeTab",
-    "storage",
     "declarativeContent"
   ],
   "background": {

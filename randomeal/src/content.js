@@ -1,7 +1,13 @@
+const RESTAURANT_CLASS = 'RestaurantItem__Root'
+const CLOSED_RESTAURANT_CLASS = 'ClosedRestaurant__Root'
+const FUTURE_ORDER_RESTAURANT_CLASS = 'RestaurantItem__Root'
+
 const getRandomeal = () => {
-    const restaurants = document.querySelectorAll("div[class^='RestaurantItemBoxStyled__Root']")
+    const restaurants = document.querySelectorAll(`div[class^='${RESTAURANT_CLASS}']`)
     const openRestaurants = Array.from(restaurants).filter(
-        rest => rest.querySelectorAll("div[class^='RestaurantItemBoxStyled__Closed']").length === 0
+        rest => rest.querySelectorAll(`div[class^='${CLOSED_RESTAURANT_CLASS}']`).length === 0
+    ).filter(
+        rest => rest.querySelectorAll(`div[class^='${FUTURE_ORDER_RESTAURANT_CLASS}']`).length === 0
     )
 
     if (openRestaurants.length) {

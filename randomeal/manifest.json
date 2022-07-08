@@ -1,25 +1,33 @@
 {
   "name": "Randomeal",
-  "version": "1.0",
+  "version": "2.0",
   "description": "Pick a random restaurant from the 10bis homepage.",
   "permissions": [
     "activeTab",
-    "declarativeContent"
+    "declarativeContent",
+    "scripting"
   ],
   "background": {
-    "scripts": [
-      "src/background.js"
-    ],
-    "persistent": false
+    "service_worker": "service_worker.js"
   },
   "content_scripts": [
     {
-      "matches": ["https://*.10bis.co.il/*"],
-      "js": ["src/content.js"],
+      "matches": [
+        "https://*.10bis.co.il/*"
+      ],
+      "js": [
+        "src/content.js"
+      ],
       "run_at": "document_end"
     }
   ],
-  "page_action": {
+  "icons": {
+    "16": "resources/icon16.png",
+    "24": "resources/icon24.png",
+    "48": "resources/icon48.png"
+  },
+  "manifest_version": 3,
+  "action": {
     "default_popup": "src/popup.html",
     "default_icon": {
       "16": "resources/icon16.png",
@@ -27,10 +35,5 @@
       "48": "resources/icon48.png"
     }
   },
-  "icons": {
-    "16": "resources/icon16.png",
-    "24": "resources/icon24.png",
-    "48": "resources/icon48.png"
-  },
-  "manifest_version": 2
+  "content_security_policy": {}
 }
